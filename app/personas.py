@@ -1,12 +1,14 @@
-import json
 from pathlib import Path
 
-from .constants import PERSONA_FILES, PERSONA_SAVE_FILE, get_connection
+from .constants import PERSONA_FILES
+from .db import get_connection
 
 try:
-    from .constants import PERSONA_FILES, PERSONA_SAVE_FILE
+    from .constants import PERSONA_FILES
+    from .db import get_connection
 except ImportError:
-    from constants import PERSONA_FILES, PERSONA_SAVE_FILE
+    from constants import PERSONA_FILES
+    from db import get_connection
 
 
 def load_persona(filename: str) -> str:
