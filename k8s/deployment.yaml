@@ -1,10 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: discord-jkbot
   namespace: default
-  labels:
-    app: discord-jkbot
 
 spec:
   replicas: 1
@@ -48,13 +47,11 @@ spec:
               cpu: "500m"
               memory: "512Mi"
 
-
           volumeMounts:
-          - name: data
-            mountPath: /data
+            - name: data
+              mountPath: /data
 
-        volumes:
+      volumes:
         - name: data
           persistentVolumeClaim:
             claimName: discord-jkbot-pvc
-
