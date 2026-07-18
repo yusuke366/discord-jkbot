@@ -3,14 +3,6 @@ from pathlib import Path
 from .constants import PERSONA_FILES
 from .db import get_connection
 
-try:
-    from .constants import PERSONA_FILES
-    from .db import get_connection
-except ImportError:
-    from constants import PERSONA_FILES
-    from db import get_connection
-
-
 def load_persona(filename: str) -> str:
     persona_dir = Path(__file__).resolve().parent / "personas"
     with (persona_dir / filename).open(encoding="utf-8") as f:
@@ -43,4 +35,4 @@ def load_channel_personas():
             for row in cur.fetchall()
         }
 
-channel_personas = load_channel_personas()
+channel_personas = {}

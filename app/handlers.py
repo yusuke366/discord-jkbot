@@ -11,18 +11,6 @@ from .constants import PERSONA_FILES
 from .model import channel_models
 from .webhooks import get_webhook
 
-try:
-    from .personas import channel_personas, load_persona
-    from .constants import PERSONA_FILES
-    from .model import channel_models
-    from .webhooks import get_webhook
-except ImportError:
-    from personas import channel_personas, load_persona
-    from constants import PERSONA_FILES
-    from model import channel_models
-    from webhooks import get_webhook
-
-
 async def fetch_url_content(url):
     async with aiohttp.ClientSession() as session:
         async with session.get(

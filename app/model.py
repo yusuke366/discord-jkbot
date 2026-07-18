@@ -3,11 +3,6 @@ from pathlib import Path
 
 from .constants import MODEL_SAVE_FILE
 
-try:
-    from .constants import MODEL_SAVE_FILE
-except ImportError:
-    from constants import MODEL_SAVE_FILE
-
 def load_channel_models():
     try:
         with open(MODEL_SAVE_FILE, encoding="utf-8") as f:

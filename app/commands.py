@@ -6,13 +6,6 @@ from discord import app_commands
 from .personas import channel_personas, save_channel_personas
 from .model import channel_models, save_channel_models
 
-try:
-    from .personas import channel_personas, save_channel_personas
-    from .model import channel_models, save_channel_models
-except ImportError:
-    from personas import channel_personas, save_channel_personas
-    from model import channel_models, save_channel_models
-
 def setup_commands(bot):
     @bot.tree.command(name="persona", description="人格を変更します")
     @app_commands.choices(
