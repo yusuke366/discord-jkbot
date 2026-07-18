@@ -83,22 +83,6 @@ PERSONA_FILES = {
             "chance": chance_for_all
         }
     ],
-    "アシスタント": [
-        {
-            "name": "あや",
-            "file": "assistant.txt",
-            "avatar": f"{AVATAR_BASE_URL}/aya.png",
-            "chance": 1.0
-        }
-    ],
-    "ソフトウェアエンジニア": [
-        {
-            "name": "りん",
-            "file": "engineer.txt",
-            "avatar": f"{AVATAR_BASE_URL}/rin.png",
-            "chance": 1.0
-        }
-    ],
     "みさき": [
         {
             "name": "みさき",
