@@ -16,7 +16,7 @@ intents.message_content = True
 
 MODEL_SAVE_FILE = "channel_models.json"
 
-chance_for_all = 0.2
+chance_for_all = 0.3
 AVATAR_BASE_URL = (
     "https://storage.googleapis.com/denkitv/jkbot"
 )
