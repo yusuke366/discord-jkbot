@@ -79,12 +79,16 @@ async def process_message(bot, message, client_ai):
         async for msg in message.channel.history(limit=20):
             if msg.id == message.id:
                 continue
-            if msg.author.bot:
-                continue
+#            if msg.author.bot:
+#                continue
             if not msg.content:
                 continue
 
-            history.append({"role": "user", "content": msg.content})
+            history.append({
+                "role": "user",
+                "name": msg.author.display_name,
+                "content": msg.content
+            })
         history.reverse()
 
         summary = None
@@ -97,7 +101,7 @@ async def process_message(bot, message, client_ai):
                     model=current_model,
                     messages=[
                         {
-                            "role": "system",
+                            "role": "developer",
                             "content": "以下の記事を200文字程度で要約してください。",
                         },
                         {
@@ -131,7 +135,7 @@ async def process_message(bot, message, client_ai):
             logging.info(f"{persona['name']} が回答します")
 
             system_prompt = load_persona(persona["file"])
-            messages = [{"role": "system", "content": system_prompt}]
+            messages = [{"role": "developer", "content": system_prompt}]
             messages.extend(history)
 
             if summary:
@@ -153,7 +157,11 @@ async def process_message(bot, message, client_ai):
                     )
                 messages.append({"role": "user", "content": image_content})
 
-            messages.append({"role": "user", "content": message.content})
+            messages.append({
+                "role": "user",
+                "name": message.author.display_name,
+                "content": message.content
+            })
 
             response = client_ai.chat.completions.create(
                 model=current_model,
@@ -166,6 +174,12 @@ async def process_message(bot, message, client_ai):
                 avatar_url=persona["avatar"],
             )
             logging.info(f"{persona['name']} が回答しました")
+
+            messages.append({
+                "role": "user",
+                "name": persona['name'],
+                "content": response.choices[0].message.content
+            })
 
     except RateLimitError:
         await webhook.send(
