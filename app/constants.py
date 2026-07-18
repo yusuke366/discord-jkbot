@@ -18,66 +18,69 @@ PERSONA_SAVE_FILE = "channel_personas.json"
 MODEL_SAVE_FILE = "channel_models.json"
 
 chance_for_all = 0.2
+AVATAR_BASE_URL = (
+    "https://storage.googleapis.com/denkitv/jkbot"
+)
 PERSONA_FILES = {
     "全員": [
         {
             "name": "みさき",
             "file": "misaki.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/misaki.png",
+            "avatar": f"{AVATAR_BASE_URL}/misaki.png",
             "chance": chance_for_all
         },
         {
             "name": "あや",
             "file": "aya.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/aya.png",
+            "avatar": f"{AVATAR_BASE_URL}/aya.png",
             "chance": chance_for_all
         },
         {
             "name": "りん",
             "file": "rin.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/rin.png",
+            "avatar": f"{AVATAR_BASE_URL}/rin.png",
             "chance": chance_for_all
         },
         {
             "name": "ゆい",
             "file": "yui.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/yui.png",
+            "avatar": f"{AVATAR_BASE_URL}/yui.png",
             "chance": chance_for_all
         },
         {
             "name": "なぎさ",
             "file": "nagisa.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/nagisa.png",
+            "avatar": f"{AVATAR_BASE_URL}/nagisa.png",
             "chance": chance_for_all
         },
         {
             "name": "ことね",
             "file": "kotone.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/kotone.png",
+            "avatar": f"{AVATAR_BASE_URL}/kotone.png",
             "chance": chance_for_all
         },
         {
             "name": "はる",
             "file": "haru.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/haru.png",
+            "avatar": f"{AVATAR_BASE_URL}/haru.png",
             "chance": chance_for_all
         },
         {
             "name": "かなで",
             "file": "kanade.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/kanade.png",
+            "avatar": f"{AVATAR_BASE_URL}/kanade.png",
             "chance": chance_for_all
         },
         {
             "name": "めぐ",
             "file": "megu.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/megu.png",
+            "avatar": f"{AVATAR_BASE_URL}/megu.png",
             "chance": chance_for_all
         },
         {
             "name": "みお",
             "file": "mio.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/mio.png",
+            "avatar": f"{AVATAR_BASE_URL}/mio.png",
             "chance": chance_for_all
         }
     ],
@@ -85,7 +88,7 @@ PERSONA_FILES = {
         {
             "name": "あや",
             "file": "assistant.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/aya.png",
+            "avatar": f"{AVATAR_BASE_URL}/aya.png",
             "chance": 1.0
         }
     ],
@@ -93,7 +96,7 @@ PERSONA_FILES = {
         {
             "name": "りん",
             "file": "engineer.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/rin.png",
+            "avatar": f"{AVATAR_BASE_URL}/rin.png",
             "chance": 1.0
         }
     ],
@@ -101,7 +104,7 @@ PERSONA_FILES = {
         {
             "name": "みさき",
             "file": "misaki.txt",
-            "avatar": "https://raw.githubusercontent.com/yusuke366/discord-chatgpt/main/app/personas/avatars/misaki.png",
+            "avatar": f"{AVATAR_BASE_URL}/misaki.png",
             "chance": 1.0
         }
     ],
@@ -109,7 +112,7 @@ PERSONA_FILES = {
         {
             "name": "あや",
             "file": "aya.txt",
-            "avatar": "https://raw.githubusercontent.com/yusuke366/discord-chatgpt/main/app/personas/avatars/aya2.png",
+            "avatar": f"{AVATAR_BASE_URL}/aya.png",
             "chance": 1.0
         }
     ],
@@ -117,7 +120,7 @@ PERSONA_FILES = {
         {
             "name": "りん",
             "file": "rin.txt",
-            "avatar": "https://raw.githubusercontent.com/yusuke366/discord-chatgpt/main/app/personas/avatars/rin.png",
+            "avatar": f"{AVATAR_BASE_URL}/rin.png",
             "chance": 1.0
         }
     ],
@@ -125,7 +128,7 @@ PERSONA_FILES = {
         {
             "name": "ゆい",
             "file": "yui.txt",
-            "avatar": "https://raw.githubusercontent.com/yusuke366/discord-chatgpt/main/app/personas/avatars/yui.png",
+            "avatar": f"{AVATAR_BASE_URL}/yui.png",
             "chance": 1.0
         }
     ],
@@ -133,7 +136,7 @@ PERSONA_FILES = {
         {
             "name": "なぎさ",
             "file": "nagisa.txt",
-            "avatar": "https://raw.githubusercontent.com/yusuke366/discord-chatgpt/main/app/personas/avatars/nagisa2.png",
+            "avatar": f"{AVATAR_BASE_URL}/nagisa.png",
             "chance": 1.0
         }
     ],
@@ -141,7 +144,7 @@ PERSONA_FILES = {
         {
             "name": "ことね",
             "file": "kotone.txt",
-            "avatar": "https://raw.githubusercontent.com/yusuke366/discord-chatgpt/main/app/personas/avatars/kotone.png",
+            "avatar": f"{AVATAR_BASE_URL}/kotone.png",
             "chance": 1.0
         }
     ],
@@ -149,7 +152,7 @@ PERSONA_FILES = {
         {
             "name": "はる",
             "file": "haru.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/haru.png",
+            "avatar": f"{AVATAR_BASE_URL}/haru.png",
             "chance": 1.0
         }
     ],
@@ -157,7 +160,7 @@ PERSONA_FILES = {
         {
             "name": "かなで",
             "file": "kanade.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/kanade.png",
+            "avatar": f"{AVATAR_BASE_URL}/kanade.png",
             "chance": 1.0
         }
     ],
@@ -165,7 +168,7 @@ PERSONA_FILES = {
         {
             "name": "めぐ",
             "file": "megu.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/megu.png",
+            "avatar": f"{AVATAR_BASE_URL}/megu.png",
             "chance": 1.0
         }
     ],
@@ -173,7 +176,7 @@ PERSONA_FILES = {
         {
             "name": "みお",
             "file": "mio.txt",
-            "avatar": "https://yusuke366.github.io/discord-chatgpt/avatars/mio.png",
+            "avatar": f"{AVATAR_BASE_URL}/mio.png",
             "chance": 1.0
         }
     ]
