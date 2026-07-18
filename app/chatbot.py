@@ -2,16 +2,19 @@ import logging
 
 from discord.ext import commands
 
-from .constants import DISCORD_TOKEN, client_ai, intents, init_db
+from .constants import DISCORD_TOKEN, client_ai, intents
+from .db import init_db
 from .commands import setup_commands
 from .handlers import setup_event_handlers
 
 try:
-    from .constants import DISCORD_TOKEN, client_ai, intents, init_db
+    from .constants import DISCORD_TOKEN, client_ai, intents
+    from .db import init_db
     from .commands import setup_commands
     from .handlers import setup_event_handlers
 except ImportError:
-    from constants import DISCORD_TOKEN, client_ai, intents, init_db
+    from constants import DISCORD_TOKEN, client_ai, intents
+    from db import init_db
     from commands import setup_commands
     from handlers import setup_event_handlers
 

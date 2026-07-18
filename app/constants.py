@@ -14,7 +14,6 @@ client_ai = OpenAI(api_key=OPENAI_API_KEY)
 intents = discord.Intents.default()
 intents.message_content = True
 
-PERSONA_SAVE_FILE = "channel_personas.json"
 MODEL_SAVE_FILE = "channel_models.json"
 
 chance_for_all = 0.2
