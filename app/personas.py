@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from .constants import PERSONA_FILES, PERSONA_SAVE_FILE
+from .constants import PERSONA_FILES, PERSONA_SAVE_FILE, get_connection
 
 try:
     from .constants import PERSONA_FILES, PERSONA_SAVE_FILE
@@ -14,19 +14,31 @@ def load_persona(filename: str) -> str:
     with (persona_dir / filename).open(encoding="utf-8") as f:
         return f.read()
 
+def save_channel_personas(channel_id, persona):
+    conn = get_connection()
+    cur = conn.cursor()
+
+    cur.execute("""
+    INSERT OR REPLACE INTO channel_personas
+    (channel_id, persona)
+    VALUES (?, ?)
+    """, (channel_id, persona))
+
+    conn.commit()
+    conn.close()
 
 def load_channel_personas():
-    try:
-        with open(PERSONA_SAVE_FILE, encoding="utf-8") as f:
-            data = json.load(f)
-            return {int(k): v for k, v in data.items()}
-    except FileNotFoundError:
-        return {}
+    with get_connection() as conn:
+        cur = conn.cursor()
 
+        cur.execute("""
+        SELECT channel_id, persona
+        FROM channel_personas
+        """)
 
-def save_channel_personas(channel_personas):
-    with open(PERSONA_SAVE_FILE, "w", encoding="utf-8") as f:
-        json.dump(channel_personas, f, ensure_ascii=False, indent=2)
-
+        return {
+            row[0]: row[1]
+            for row in cur.fetchall()
+        }
 
 channel_personas = load_channel_personas()

@@ -47,3 +47,14 @@ spec:
             limits:
               cpu: "500m"
               memory: "512Mi"
+
+
+          volumeMounts:
+          - name: data
+            mountPath: /data
+
+        volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: discord-jkbot-pvc
+
