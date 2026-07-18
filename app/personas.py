@@ -9,17 +9,23 @@ def load_persona(filename: str) -> str:
         return f.read()
 
 def save_channel_personas(channel_id, persona):
-    conn = get_connection()
-    cur = conn.cursor()
+    with get_connection() as conn:
+        cur = conn.cursor()
 
-    cur.execute("""
-    INSERT OR REPLACE INTO channel_personas
-    (channel_id, persona)
-    VALUES (?, ?)
-    """, (channel_id, persona))
+        cur.execute("""
+        INSERT OR REPLACE INTO channel_personas
+        (channel_id, persona)
+        VALUES (?, ?)
+        """, (channel_id, persona))
 
-    conn.commit()
-    conn.close()
+def delete_channel_persona(channel_id):
+    with get_connection() as conn:
+        cur = conn.cursor()
+
+        cur.execute("""
+        DELETE FROM channel_personas
+        WHERE channel_id = ?
+        """, (channel_id,))
 
 def load_channel_personas():
     with get_connection() as conn:

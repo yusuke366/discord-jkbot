@@ -3,8 +3,8 @@ from typing import Optional
 import discord
 from discord import app_commands
 
-from .personas import channel_personas, save_channel_personas
-from .model import channel_models, save_channel_models
+from .personas import channel_personas, save_channel_personas, delete_channel_persona
+from .model import channel_models
 
 def setup_commands(bot):
     @bot.tree.command(name="persona", description="人格を変更します")
@@ -39,12 +39,17 @@ def setup_commands(bot):
         if persona.value == "なし":
             channel_personas.pop(interaction.channel_id, None)
             save_channel_personas(channel_personas)
-
+            delete_channel_persona(
+                interaction.channel_id
+            )
             await interaction.response.send_message("人格設定を解除しました。", ephemeral=True)
             return
 
         channel_personas[interaction.channel_id] = persona.value
-        save_channel_personas(channel_personas)
+        save_channel_personas(
+            interaction.channel_id,
+            persona.value
+        )
 
         await interaction.response.send_message(
             f"人格を {persona.value} に変更しました。", ephemeral=True
