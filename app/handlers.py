@@ -111,6 +111,13 @@ async def process_message(bot, message, client_ai):
                     ],
                 )
                 summary = summary_response.choices[0].message.content
+                history.append(
+                    {
+                        "role": "user",
+                        "name": message.author.display_name,
+                        "content": f"共有されたURLの要約:\n{summary}",
+                    }
+                )
             except Exception as e:
                 logging.error(f"URL取得失敗: {e}")
 
@@ -118,6 +125,25 @@ async def process_message(bot, message, client_ai):
         for attachment in message.attachments:
             if attachment.content_type and attachment.content_type.startswith("image/"):
                 images.append(attachment.url)
+                image_content = [{"type": "text", "text": "画像が投稿されました"}]
+                for image_url in images:
+                    image_content.append(
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": image_url},
+                        }
+                    )
+                history.append({
+                    "role": "user",
+                    "name": message.author.display_name,
+                    "content": image_content
+                })
+
+        history.append({
+            "role": "user",
+            "name": message.author.display_name,
+            "content": message.content
+        })
 
         shuffled_personas = random.sample(personas, len(personas))
 
@@ -137,31 +163,6 @@ async def process_message(bot, message, client_ai):
             system_prompt = load_persona(persona["file"])
             messages = [{"role": "developer", "content": system_prompt}]
             messages.extend(history)
-
-            if summary:
-                messages.append(
-                    {
-                        "role": "user",
-                        "content": f"共有されたURLの要約:\n{summary}",
-                    }
-                )
-
-            if images:
-                image_content = [{"type": "text", "text": "画像が投稿されました"}]
-                for image_url in images:
-                    image_content.append(
-                        {
-                            "type": "image_url",
-                            "image_url": {"url": image_url},
-                        }
-                    )
-                messages.append({"role": "user", "content": image_content})
-
-            messages.append({
-                "role": "user",
-                "name": message.author.display_name,
-                "content": message.content
-            })
 
             response = client_ai.chat.completions.create(
                 model=current_model,
